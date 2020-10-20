@@ -10,5 +10,6 @@ BlockChain Development Course
 **6. 初始化文档 gitbook init**
 **7. gitbook serve 后就能在浏览器里看到文档了**
 **8. gitbook build 构建文档，就输出了html文档文件**
-**9. SUMMARY.md是目录文件，其他内容页面用.md文件关联好，就可以写开发文档和API文档了**
+**9. SUMMARY.md是目录文件，其他内容页面用.md文件关联好，就可以写开发文档和API文档了**  
+![baidu](http://www.baidu.com/img/bdlogo.gif "百度logo")  
 
