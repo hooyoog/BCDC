@@ -6,6 +6,7 @@
     <title>localStorage</title>
 </head>
 <body>
+    案例1：<br />
     <script >
         
         function getHandler(){
@@ -26,6 +27,31 @@
     <input type="text" id="url"/>
     <button onclick="setHandler()">点击更新</button>
     <button onclick="getHandler()">点击获取</button>
-    <div id="urlDiv"></div>
+    <hr />
+
+    案例2：<br />
+    <script >
+        
+        function getHeroHandler(){
+
+            alert((JSON.parse(localStorage.getItem("hero")).HP)+1);
+            
+        }
+
+        function setHeroHandler(){
+
+            let heroJson={name:"关羽",HP:999}
+
+            localStorage.setItem("hero",JSON.stringify(heroJson));
+            console.log(JSON.parse(localStorage.getItem("hero"))) ;
+        }
+
+        
+    </script>
+
+    <input type="text" id="url"/>
+    <button onclick="setHeroHandler()">点击更新</button>
+    <button onclick="getHeroHandler()">点击获取</button>
+
 </body>
 </html>

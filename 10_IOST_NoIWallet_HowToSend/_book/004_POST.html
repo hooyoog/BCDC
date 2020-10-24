@@ -4,7 +4,7 @@
     <head>
         <meta charset="UTF-8">
         <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
-        <title>Introduction · GitBook</title>
+        <title>POST传参获得json返回值-打印 · GitBook</title>
         <meta http-equiv="X-UA-Compatible" content="IE=edge" />
         <meta name="description" content="">
         <meta name="generator" content="GitBook 3.2.3">
@@ -57,8 +57,10 @@
     <link rel="shortcut icon" href="gitbook/images/favicon.ico" type="image/x-icon">
 
     
-    <link rel="next" href="000_ABOUTBOOK.html" />
+    <link rel="next" href="005_ZHANGZHISHI.html" />
     
+    
+    <link rel="prev" href="003_GET.html" />
     
 
     </head>
@@ -87,7 +89,7 @@
         
         
     
-        <li class="chapter active" data-level="1.1" data-path="./">
+        <li class="chapter " data-level="1.1" data-path="./">
             
                 <a href="./">
             
@@ -152,7 +154,7 @@
             
         </li>
     
-        <li class="chapter " data-level="1.6" data-path="004_POST.html">
+        <li class="chapter active" data-level="1.6" data-path="004_POST.html">
             
                 <a href="004_POST.html">
             
@@ -208,7 +210,7 @@
     <!-- Title -->
     <h1>
         <i class="fa fa-circle-o-notch fa-spin"></i>
-        <a href="." >Introduction</a>
+        <a href="." >POST传参获得json返回值-打印</a>
     </h1>
 </div>
 
@@ -223,7 +225,43 @@
     
                                 <section class="normal markdown-section">
                                 
-                                <h1 id="introduction">Introduction</h1>
+                                <h1 id="post&#x4F20;&#x53C2;&#x83B7;&#x5F97;json&#x8FD4;&#x56DE;&#x503C;-&#x6253;&#x5370;">POST&#x4F20;&#x53C2;&#x83B7;&#x5F97;json&#x8FD4;&#x56DE;&#x503C;-&#x6253;&#x5370;</h1>
+<pre><code class="lang-html"><span class="hljs-tag">&lt;<span class="hljs-name">script</span>&gt;</span><span class="javascript">
+<span class="hljs-comment">//&#x6253;&#x5370;&#x5230;&#x6D4F;&#x89C8;&#x5668;&#x7684;&#x63A7;&#x5236;&#x53F0;</span>
+  httpPostAPI=()=&gt; {
+        <span class="hljs-keyword">var</span> url = <span class="hljs-string">&apos;http://119.249.54.118:30001/getContractStorage&apos;</span>;
+        <span class="hljs-keyword">var</span> xhr = <span class="hljs-keyword">new</span> XMLHttpRequest();
+        xhr.responseType = <span class="hljs-string">&quot;text&quot;</span>;
+        xhr.open(<span class="hljs-string">&apos;POST&apos;</span>, url);
+        xhr.setRequestHeader(<span class="hljs-string">&quot;Content-Type&quot;</span>, <span class="hljs-string">&quot;application/x-www-form-urlencoded;&quot;</span>);
+
+        <span class="hljs-comment">//&#x53D1;&#x9001; &#x5B57;&#x7B26;&#x4E32;</span>
+         xhr.send(<span class="hljs-built_in">JSON</span>.stringify({
+         <span class="hljs-string">&quot;id&quot;</span>:<span class="hljs-string">&quot;Contract9m7S1Y66YL2XqXvh1VxrL7X8cdh19MKkMknGKXWPFZhk&quot;</span>,
+         <span class="hljs-string">&quot;key&quot;</span>:<span class="hljs-string">&quot;miguan&quot;</span>,
+         <span class="hljs-string">&quot;field&quot;</span>:<span class="hljs-string">&quot;announcer_name&quot;</span>,
+         <span class="hljs-string">&quot;by_longest_chain&quot;</span>:<span class="hljs-literal">true</span>
+
+         }));
+
+        xhr.onload = (e) =&gt;{
+            <span class="hljs-built_in">console</span>.log(<span class="hljs-string">&apos;httpPostTest onload&#x3002;e====&gt;&apos;</span> + <span class="hljs-built_in">JSON</span>.stringify(e));
+        };
+        xhr.onreadystatechange = (e) =&gt;{
+            <span class="hljs-built_in">console</span>.log(<span class="hljs-string">&apos;httpPostTest onreadystatechange&#x3002;e====&gt;&apos;</span> + <span class="hljs-built_in">JSON</span>.stringify(e));
+
+            <span class="hljs-keyword">if</span>(xhr.readyState == <span class="hljs-number">4</span> &amp;&amp; xhr.status == <span class="hljs-number">200</span>){
+                <span class="hljs-keyword">var</span> xhrRes = xhr.responseText;
+
+                <span class="hljs-built_in">console</span>.log(<span class="hljs-string">&apos;httpPostTest return message====&gt;&apos;</span> + xhrRes);
+                <span class="hljs-built_in">console</span>.log(<span class="hljs-string">&apos;data====&gt;&apos;</span> + <span class="hljs-built_in">JSON</span>.parse(xhrRes).data);
+
+            }
+        };
+    }
+
+</span><span class="hljs-tag">&lt;/<span class="hljs-name">script</span>&gt;</span>
+</code></pre>
 
                                 
                                 </section>
@@ -251,8 +289,12 @@
 
             
                 
+                <a href="003_GET.html" class="navigation navigation-prev " aria-label="Previous page: GET获得json返回值-展示余额">
+                    <i class="fa fa-angle-left"></i>
+                </a>
                 
-                <a href="000_ABOUTBOOK.html" class="navigation navigation-next navigation-unique" aria-label="Next page: gitbook">
+                
+                <a href="005_ZHANGZHISHI.html" class="navigation navigation-next " aria-label="Next page: 涨姿势">
                     <i class="fa fa-angle-right"></i>
                 </a>
                 
@@ -263,7 +305,7 @@
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"Introduction","level":"1.1","depth":1,"next":{"title":"gitbook","level":"1.2","depth":1,"path":"000_ABOUTBOOK.md","ref":"000_ABOUTBOOK.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":["livereload"],"pluginsConfig":{"livereload":{},"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"README.md","mtime":"2020-10-20T20:03:54.737Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2020-10-24T21:13:56.995Z"},"basePath":".","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"POST传参获得json返回值-打印","level":"1.6","depth":1,"next":{"title":"涨姿势","level":"1.7","depth":1,"path":"005_ZHANGZHISHI.md","ref":"005_ZHANGZHISHI.md","articles":[]},"previous":{"title":"GET获得json返回值-展示余额","level":"1.5","depth":1,"path":"003_GET.md","ref":"003_GET.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":["livereload"],"pluginsConfig":{"livereload":{},"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"004_POST.md","mtime":"2020-10-24T20:36:36.980Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2020-10-24T21:13:56.995Z"},"basePath":".","book":{"language":""}});
         });
     </script>
 </div>

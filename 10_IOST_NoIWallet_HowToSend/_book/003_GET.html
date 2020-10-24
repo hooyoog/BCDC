@@ -4,7 +4,7 @@
     <head>
         <meta charset="UTF-8">
         <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
-        <title>Introduction · GitBook</title>
+        <title>GET获得json返回值-展示余额 · GitBook</title>
         <meta http-equiv="X-UA-Compatible" content="IE=edge" />
         <meta name="description" content="">
         <meta name="generator" content="GitBook 3.2.3">
@@ -57,8 +57,10 @@
     <link rel="shortcut icon" href="gitbook/images/favicon.ico" type="image/x-icon">
 
     
-    <link rel="next" href="000_ABOUTBOOK.html" />
+    <link rel="next" href="004_POST.html" />
     
+    
+    <link rel="prev" href="002_TRY.html" />
     
 
     </head>
@@ -87,7 +89,7 @@
         
         
     
-        <li class="chapter active" data-level="1.1" data-path="./">
+        <li class="chapter " data-level="1.1" data-path="./">
             
                 <a href="./">
             
@@ -139,7 +141,7 @@
             
         </li>
     
-        <li class="chapter " data-level="1.5" data-path="003_GET.html">
+        <li class="chapter active" data-level="1.5" data-path="003_GET.html">
             
                 <a href="003_GET.html">
             
@@ -208,7 +210,7 @@
     <!-- Title -->
     <h1>
         <i class="fa fa-circle-o-notch fa-spin"></i>
-        <a href="." >Introduction</a>
+        <a href="." >GET获得json返回值-展示余额</a>
     </h1>
 </div>
 
@@ -223,7 +225,41 @@
     
                                 <section class="normal markdown-section">
                                 
-                                <h1 id="introduction">Introduction</h1>
+                                <h1 id="get&#x83B7;&#x5F97;api-json&#x8FD4;&#x56DE;&#x503C;-&#x5C55;&#x793A;&#x4F59;&#x989D;">GET&#x83B7;&#x5F97;API json&#x8FD4;&#x56DE;&#x503C; &#x5C55;&#x793A;&#x4F59;&#x989D;</h1>
+<pre><code class="lang-html"><span class="hljs-tag">&lt;<span class="hljs-name">script</span>&gt;</span><span class="actionscript">
+
+<span class="hljs-comment">//1 &#x5728;state&#x4E2D;&#x5B9A;&#x4E49;petBalance</span>
+state={petBalance:<span class="hljs-number">0</span>}
+
+<span class="hljs-comment">//2 &#x5728;&#x754C;&#x9762;&#x4E0A;&#x663E;&#x793A;&#x4F59;&#x989D;</span>
+<span class="hljs-keyword">const</span> {petBalance}=<span class="hljs-keyword">this</span>.state   
+&lt;div&gt;&#x4F59; &#x989D;:{petBalance} PET&lt;/div&gt;  
+
+<span class="hljs-comment">//3 GET&#x63D0;&#x4EA4;&#x83B7;&#x5F97;json&#x7684;&#x65B9;&#x6CD5;&#xFF0C;&#x6CE8;&#x610F;&#x90FD;&#x8981;&#x7528;&#x7BAD;&#x5934;&#x51FD;&#x6570;&#xFF0C;localStorage.getItem(&quot;local_account&quot;)&#x662F;&#x7528;&#x6237;&#x540D;</span>
+httpGetBanlanceAPI=()=&gt; {
+          <span class="hljs-keyword">var</span> url = <span class="hljs-string">&quot;http://119.249.54.118:30001/getTokenBalance/&quot;</span>+localStorage.getItem(<span class="hljs-string">&quot;local_account&quot;</span>)+<span class="hljs-string">&quot;/pet/true&quot;</span>;
+          <span class="hljs-keyword">var</span> xhr = <span class="hljs-keyword">new</span> XMLHttpRequest();
+          xhr.responseType = <span class="hljs-string">&quot;text&quot;</span>;
+          xhr.open(<span class="hljs-string">&apos;get&apos;</span>, url);
+          xhr.setRequestHeader(<span class="hljs-string">&quot;Content-Type&quot;</span>, <span class="hljs-string">&quot;application/x-www-form-urlencoded;&quot;</span>);
+          xhr.send();
+          xhr.onload = (e)=&gt; {
+            console.log(<span class="hljs-string">&apos; onload&#x3002;e====&gt;&apos;</span> + JSON.stringify(e));
+          };
+          xhr.onreadystatechange = (e) =&gt;{
+            console.log(<span class="hljs-string">&apos;httpGet onreadystatechange&#x3002;e====&gt;&apos;</span> + JSON.stringify(e));
+            <span class="hljs-keyword">if</span>(xhr.readyState == <span class="hljs-number">4</span> &amp;&amp; xhr.status == <span class="hljs-number">200</span>){
+                <span class="hljs-keyword">var</span> xhrRes = xhr.responseText;
+                console.log(<span class="hljs-string">&apos;httpGET return message====&gt;&apos;</span> + JSON.parse(xhrRes).balance);
+                setTimeout(() =&gt; {
+                  <span class="hljs-keyword">this</span>.setState({petBalance:JSON.parse(xhrRes).balance})
+                }, <span class="hljs-number">100</span>);
+            }
+        };
+      }
+
+</span><span class="hljs-tag">&lt;/<span class="hljs-name">script</span>&gt;</span>
+</code></pre>
 
                                 
                                 </section>
@@ -251,8 +287,12 @@
 
             
                 
+                <a href="002_TRY.html" class="navigation navigation-prev " aria-label="Previous page: localStorage完整案例">
+                    <i class="fa fa-angle-left"></i>
+                </a>
                 
-                <a href="000_ABOUTBOOK.html" class="navigation navigation-next navigation-unique" aria-label="Next page: gitbook">
+                
+                <a href="004_POST.html" class="navigation navigation-next " aria-label="Next page: POST传参获得json返回值-打印">
                     <i class="fa fa-angle-right"></i>
                 </a>
                 
@@ -263,7 +303,7 @@
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"Introduction","level":"1.1","depth":1,"next":{"title":"gitbook","level":"1.2","depth":1,"path":"000_ABOUTBOOK.md","ref":"000_ABOUTBOOK.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":["livereload"],"pluginsConfig":{"livereload":{},"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"README.md","mtime":"2020-10-20T20:03:54.737Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2020-10-24T21:13:56.995Z"},"basePath":".","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"GET获得json返回值-展示余额","level":"1.5","depth":1,"next":{"title":"POST传参获得json返回值-打印","level":"1.6","depth":1,"path":"004_POST.md","ref":"004_POST.md","articles":[]},"previous":{"title":"localStorage完整案例","level":"1.4","depth":1,"path":"002_TRY.md","ref":"002_TRY.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":["livereload"],"pluginsConfig":{"livereload":{},"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"003_GET.md","mtime":"2020-10-24T20:31:41.087Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2020-10-24T21:13:56.995Z"},"basePath":".","book":{"language":""}});
         });
     </script>
 </div>
