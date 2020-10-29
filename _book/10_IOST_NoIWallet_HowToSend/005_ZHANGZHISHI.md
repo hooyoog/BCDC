@@ -1,11 +1,11 @@
 # 涨姿势 -0=（o ~ o）=0-
 
 
-#### 1 如果运行着react start ，不小心按了Ctrl+z，可以用：   fg 命令进入，然后再Ctrl+c来关闭本次启动    
+#### 如果运行着react start ，不小心按了Ctrl+z，可以用：   fg 命令进入，然后再Ctrl+c来关闭本次启动    
 
-#### 2 cnpm install fetch-jsonp --save 可以读取加密的json   
+#### cnpm install fetch-jsonp --save 可以读取加密的json   
 
-#### 3 想利用js修改div宽度，js必须在div下方   
+#### 想利用js修改div宽度，js必须在div下方   
 ```HTML
     <style>
         #root{
@@ -29,5 +29,3 @@
       }
     </script>
 ```
-
-#### 4 箭头函数里调用的函数，必须是用箭头声明的函数，不能是function声明的   

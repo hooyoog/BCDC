@@ -4,7 +4,7 @@
     <head>
         <meta charset="UTF-8">
         <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
-        <title>localStorage的应用场景 · GitBook</title>
+        <title>查询JSON数据，排版到REACT中 · GitBook</title>
         <meta http-equiv="X-UA-Compatible" content="IE=edge" />
         <meta name="description" content="">
         <meta name="generator" content="GitBook 3.2.3">
@@ -57,10 +57,10 @@
     <link rel="shortcut icon" href="gitbook/images/favicon.ico" type="image/x-icon">
 
     
-    <link rel="next" href="002_TRY.html" />
+    <link rel="next" href="007_showPage_1.html" />
     
     
-    <link rel="prev" href="000_ABOUTBOOK.html" />
+    <link rel="prev" href="006_iControll_002.html" />
     
 
     </head>
@@ -115,7 +115,7 @@
             
         </li>
     
-        <li class="chapter active" data-level="1.3" data-path="001_WHY.html">
+        <li class="chapter " data-level="1.3" data-path="001_WHY.html">
             
                 <a href="001_WHY.html">
             
@@ -245,7 +245,7 @@
         
         
     
-        <li class="chapter " data-level="3.1" data-path="007_showPage.html">
+        <li class="chapter active" data-level="3.1" data-path="007_showPage.html">
             
                 <a href="007_showPage.html">
             
@@ -385,7 +385,7 @@
     <!-- Title -->
     <h1>
         <i class="fa fa-circle-o-notch fa-spin"></i>
-        <a href="." >localStorage的应用场景</a>
+        <a href="." >查询JSON数据，排版到REACT中</a>
     </h1>
 </div>
 
@@ -400,49 +400,10 @@
     
                                 <section class="normal markdown-section">
                                 
-                                <h1 id="&#x4F7F;&#x7528;localstorage&#x5B58;&#x50A8;&#x5BC6;&#x94A5;">&#x4F7F;&#x7528;localStorage&#x5B58;&#x50A8;&#x5BC6;&#x94A5;</h1>
-<h2 id="&#x4E3A;&#x4EC0;&#x4E48;&#x8981;&#x653E;&#x5F03;&#x4F7F;&#x7528;iwallet-&#xFF1F;">&#x4E3A;&#x4EC0;&#x4E48;&#x8981;&#x653E;&#x5F03;&#x4F7F;&#x7528;IWALLET &#xFF1F;</h2>
-<p><strong>&#x4E00;&#x822C;&#x60C5;&#x51B5;&#x4E0B;&#x5EFA;&#x8BAE;&#x4F7F;&#x7528;IWALLET</strong><br>&#x4F46;&#x662F;&#x5728;&#x5B9E;&#x9645;&#x63A8;&#x5E7F;&#x4E2D;&#xFF0C;&#x6709;&#x4E00;&#x4E9B;&#x7528;&#x6237;&#xFF0C;&#x867D;&#x7136;&#x5BF9;&#x4F60;&#x7684;&#x9879;&#x76EE;&#x611F;&#x5174;&#x8DA3;&#xFF0C;&#x4F46;&#x662F;&#x7EDD;&#x5BF9;&#x4E0D;&#x4F1A;&#x4E3A;&#x4E86;&#x6B64;&#x9879;&#x76EE;&#x5B89;&#x88C5;&#x624B;&#x673A;&#x94B1;&#x5305;APP&#x7684;&#xFF0C;<br>&#x66F4;&#x4E0D;&#x4F1A;&#x4F7F;&#x7528;Chrome&#x6D4F;&#x89C8;&#x5668;&#x5B89;&#x88C5;&#x589E;&#x5F3A;&#x63D2;&#x4EF6;&#x3002;<br>&#x800C;IOST&#x5E73;&#x53F0;DAPP&#x65E5;&#x6D3B;&#x8DC3;&#x7528;&#x6237;&#x7EA6;10000&#x4EBA;&#x5DE6;&#x53F3;&#xFF0C;&#x5F00;&#x53D1;&#x8005;&#x53EA;&#x4F9D;&#x9760;&#x8FD9;&#x4E9B;&#x8001;&#x7528;&#x6237;&#xFF0C;&#x662F;&#x65E0;&#x6CD5;&#x521B;&#x4E1A;&#x6210;&#x529F;&#x7684;&#x3002;<br>&#x4F60;&#x81EA;&#x5DF1;&#x505A;&#x7EBF;&#x4E0A;&#x63A8;&#x5E7F;&#x3001;&#x7EBF;&#x4E0B;&#x6D3B;&#x52A8;&#x53D1;&#x5C55;&#x6765;&#x7684;&#x7C89;&#x4E1D;&#xFF0C;&#x4E5F;&#x820D;&#x4E0D;&#x5F97;&#x5F15;&#x6D41;&#x5230;&#x5176;&#x4ED6;&#x5927;&#x54C1;&#x724C;&#x94B1;&#x5305;&#x53BB;&#x3002;<br>&#x6240;&#x4EE5;&#x9700;&#x8981;&#x5F00;&#x53D1;&#x76F4;&#x63A5;&#x5728;&#x5FAE;&#x4FE1;&#x91CC;&#x5C31;&#x80FD;&#x53D1;&#x9001;&#x4EA4;&#x6613;&#x7684;DAPP&#xFF0C;(&#x540E;&#x7EED;&#x7AE0;&#x8282;&#x8BB2;&#x89E3;&#x94B1;&#x5305;&#x7684;&#x5F00;&#x53D1;)<br>&#x5E76;&#x4E14;&#x4E3A;&#x4E86;&#x514D;&#x8D23;&#xFF0C;&#x5343;&#x4E07;&#x4E0D;&#x8981;&#x5E2E;&#x52A9;&#x65B0;&#x7528;&#x6237;&#x5B58;&#x50A8;&#x5BC6;&#x94A5;&#x5728;&#x5F00;&#x53D1;&#x8005;&#x7684;&#x670D;&#x52A1;&#x5668;&#x4E0A;&#x3002;<br>&#x5BC6;&#x94A5;&#x4E00;&#x5B9A;&#x8981;&#x5B58;&#x5728;&#x7528;&#x6237;&#x672C;&#x5730;<br>&#x672C;&#x7AE0;&#x8282;&#x7531;&#x6B64;&#x800C;&#x751F;&#x3002;  </p>
-<p><strong>&#x5185;&#x5BB9;</strong>  </p>
-<ol>
-<li>&#x672C;&#x5730;localStroge   </li>
-<li>&#x5B58;&#x50A8;&#x5BC6;&#x94A5;&#x548C;&#x7528;&#x6237;&#x540D;   </li>
-<li>&#x52A0;&#x5BC6;&#x5B58;&#x50A8;&#x5230;&#x672C;&#x5730;   </li>
-<li>&#x663E;&#x8457;&#x7684;&#x98CE;&#x9669;&#x8BF4;&#x660E;   </li>
-<li>&#x4ECE;&#x5FAE;&#x4FE1;&#x6D4F;&#x89C8;&#x5668;&#x4E2D;&#x53D1;&#x9001;IOST&#x4EA4;&#x6613;   </li>
-</ol>
-<h3 id="1-&#x672C;&#x5730;&#x6D4F;&#x89C8;&#x5668;localstroge&#x5B58;&#x50A8;">1 &#x672C;&#x5730;&#x6D4F;&#x89C8;&#x5668;localStroge&#x5B58;&#x50A8;</h3>
-<p>&#x6848;&#x4F8B;1   </p>
-<pre><code class="lang-html">    <span class="hljs-tag">&lt;<span class="hljs-name">script</span> &gt;</span><span class="javascript">
-        <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">getHandler</span>(<span class="hljs-params"></span>)</span>{
-            alert(localStorage.getItem(<span class="hljs-string">&quot;url&quot;</span>));
-        }
-
-        <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">setHandler</span>(<span class="hljs-params"></span>)
-            <span class="hljs-title">localStorage</span>.<span class="hljs-title">setItem</span>(<span class="hljs-params">&quot;url&quot;,document.getElementById(&quot;url&quot;</span>).<span class="hljs-title">value</span>);
-            <span class="hljs-title">console</span>.<span class="hljs-title">log</span>(<span class="hljs-params">localStorage.getItem(&quot;url&quot;</span>)) ;
-        }
-    </span></span><span class="hljs-tag">&lt;/<span class="hljs-name">script</span>&gt;</span>
-
-    <span class="hljs-tag">&lt;<span class="hljs-name">input</span> <span class="hljs-attr">type</span>=<span class="hljs-string">&quot;text&quot;</span> <span class="hljs-attr">id</span>=<span class="hljs-string">&quot;url&quot;</span>/&gt;</span>
-    <span class="hljs-tag">&lt;<span class="hljs-name">button</span> <span class="hljs-attr">onclick</span>=<span class="hljs-string">&quot;setHandler()&quot;</span>&gt;</span>&#x70B9;&#x51FB;&#x66F4;&#x65B0;<span class="hljs-tag">&lt;/<span class="hljs-name">button</span>&gt;</span>
-    <span class="hljs-tag">&lt;<span class="hljs-name">button</span> <span class="hljs-attr">onclick</span>=<span class="hljs-string">&quot;getHandler()&quot;</span>&gt;</span>&#x70B9;&#x51FB;&#x83B7;&#x53D6;<span class="hljs-tag">&lt;/<span class="hljs-name">button</span>&gt;</span>
-</code></pre>
-<p><img src="http://www.baidu.com/img/bdlogo.gif" alt="baidu" title="&#x767E;&#x5EA6;logo"><br>&#x6848;&#x4F8B;2   </p>
-<pre><code class="lang-html">    <span class="hljs-tag">&lt;<span class="hljs-name">script</span> &gt;</span><span class="javascript">
-        <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">getHeroHandler</span>(<span class="hljs-params"></span>)</span>{
-            alert((<span class="hljs-built_in">JSON</span>.parse(localStorage.getItem(<span class="hljs-string">&quot;hero&quot;</span>)).HP)+<span class="hljs-number">1</span>);
-        }
-        <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">setHeroHandler</span>(<span class="hljs-params"></span>)</span>{
-            <span class="hljs-keyword">let</span> heroJson={name:<span class="hljs-string">&quot;&#x5173;&#x7FBD;&quot;</span>,HP:<span class="hljs-number">999</span>}
-            localStorage.setItem(<span class="hljs-string">&quot;hero&quot;</span>,<span class="hljs-built_in">JSON</span>.stringify(heroJson));
-            <span class="hljs-built_in">console</span>.log(<span class="hljs-built_in">JSON</span>.parse(localStorage.getItem(<span class="hljs-string">&quot;hero&quot;</span>))) ;
-        }
-    </span><span class="hljs-tag">&lt;/<span class="hljs-name">script</span>&gt;</span>
-    <span class="hljs-tag">&lt;<span class="hljs-name">input</span> <span class="hljs-attr">type</span>=<span class="hljs-string">&quot;text&quot;</span> <span class="hljs-attr">id</span>=<span class="hljs-string">&quot;url&quot;</span>/&gt;</span>
-    <span class="hljs-tag">&lt;<span class="hljs-name">button</span> <span class="hljs-attr">onclick</span>=<span class="hljs-string">&quot;setHeroHandler()&quot;</span>&gt;</span>&#x70B9;&#x51FB;&#x66F4;&#x65B0;<span class="hljs-tag">&lt;/<span class="hljs-name">button</span>&gt;</span>
-    <span class="hljs-tag">&lt;<span class="hljs-name">button</span> <span class="hljs-attr">onclick</span>=<span class="hljs-string">&quot;getHeroHandler()&quot;</span>&gt;</span>&#x70B9;&#x51FB;&#x83B7;&#x53D6;<span class="hljs-tag">&lt;/<span class="hljs-name">button</span>&gt;</span>
-</code></pre>
+                                <h1 id="&#x67E5;&#x8BE2;&#x3001;&#x89E3;&#x6790;&#x3001;&#x6392;&#x7248;">&#x67E5;&#x8BE2;&#x3001;&#x89E3;&#x6790;&#x3001;&#x6392;&#x7248;</h1>
+<h4 id="1-post&#x67E5;&#x8BE2;&#x8FD4;&#x56DE;json">1 post&#x67E5;&#x8BE2;&#x8FD4;&#x56DE;json</h4>
+<h4 id="2-&#x89E3;&#x6790;json">2 &#x89E3;&#x6790;json</h4>
+<h4 id="3-&#x6839;&#x636E;json&#x6392;&#x7248;&#x5230;react">3 &#x6839;&#x636E;json&#x6392;&#x7248;&#x5230;react</h4>
 
                                 
                                 </section>
@@ -470,12 +431,12 @@
 
             
                 
-                <a href="000_ABOUTBOOK.html" class="navigation navigation-prev " aria-label="Previous page: gitbook">
+                <a href="006_iControll_002.html" class="navigation navigation-prev " aria-label="Previous page: 管理员后台smart contract">
                     <i class="fa fa-angle-left"></i>
                 </a>
                 
                 
-                <a href="002_TRY.html" class="navigation navigation-next " aria-label="Next page: localStorage完整案例">
+                <a href="007_showPage_1.html" class="navigation navigation-next " aria-label="Next page: 1 查询">
                     <i class="fa fa-angle-right"></i>
                 </a>
                 
@@ -486,7 +447,7 @@
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"localStorage的应用场景","level":"1.3","depth":1,"next":{"title":"localStorage完整案例","level":"1.4","depth":1,"path":"002_TRY.md","ref":"002_TRY.md","articles":[{"title":"GET获得json返回值-展示余额","level":"1.4.1","depth":2,"path":"003_GET.md","ref":"003_GET.md","articles":[]},{"title":"POST传参获得json返回值-打印","level":"1.4.2","depth":2,"path":"004_POST.md","ref":"004_POST.md","articles":[]}]},"previous":{"title":"gitbook","level":"1.2","depth":1,"path":"000_ABOUTBOOK.md","ref":"000_ABOUTBOOK.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":["livereload"],"pluginsConfig":{"livereload":{},"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"001_WHY.md","mtime":"2020-10-24T20:08:31.670Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2020-10-29T19:48:36.185Z"},"basePath":".","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"查询JSON数据，排版到REACT中","level":"3.1","depth":1,"next":{"title":"1 查询","level":"3.1.1","depth":2,"path":"007_showPage_1.md","ref":"007_showPage_1.md","articles":[]},"previous":{"title":"管理员后台smart contract","level":"2.1.2","depth":2,"path":"006_iControll_002.md","ref":"006_iControll_002.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":["livereload"],"pluginsConfig":{"livereload":{},"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"007_showPage.md","mtime":"2020-10-29T19:44:15.391Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2020-10-29T19:48:36.185Z"},"basePath":".","book":{"language":""}});
         });
     </script>
 </div>

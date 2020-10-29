@@ -4,7 +4,7 @@
     <head>
         <meta charset="UTF-8">
         <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
-        <title>POST传参获得json返回值-打印 · GitBook</title>
+        <title>做一个DAPP管理员后台 · GitBook</title>
         <meta http-equiv="X-UA-Compatible" content="IE=edge" />
         <meta name="description" content="">
         <meta name="generator" content="GitBook 3.2.3">
@@ -57,10 +57,10 @@
     <link rel="shortcut icon" href="gitbook/images/favicon.ico" type="image/x-icon">
 
     
-    <link rel="next" href="005_ZHANGZHISHI.html" />
+    <link rel="next" href="006_iControll_002.html" />
     
     
-    <link rel="prev" href="003_GET.html" />
+    <link rel="prev" href="006_iControll.html" />
     
 
     </head>
@@ -155,7 +155,7 @@
             
         </li>
     
-        <li class="chapter active" data-level="1.4.2" data-path="004_POST.html">
+        <li class="chapter " data-level="1.4.2" data-path="004_POST.html">
             
                 <a href="004_POST.html">
             
@@ -207,7 +207,7 @@
             <ul class="articles">
                 
     
-        <li class="chapter " data-level="2.1.1" data-path="006_iControll_001.html">
+        <li class="chapter active" data-level="2.1.1" data-path="006_iControll_001.html">
             
                 <a href="006_iControll_001.html">
             
@@ -385,7 +385,7 @@
     <!-- Title -->
     <h1>
         <i class="fa fa-circle-o-notch fa-spin"></i>
-        <a href="." >POST传参获得json返回值-打印</a>
+        <a href="." >做一个DAPP管理员后台</a>
     </h1>
 </div>
 
@@ -401,6 +401,7 @@
                                 <section class="normal markdown-section">
                                 
                                 <h1 id="post&#x4F20;&#x53C2;&#x83B7;&#x5F97;json&#x8FD4;&#x56DE;&#x503C;-&#x6253;&#x5370;">POST&#x4F20;&#x53C2;&#x83B7;&#x5F97;json&#x8FD4;&#x56DE;&#x503C;-&#x6253;&#x5370;</h1>
+<p>&#x67E5;&#x8BE2;&#x529F;&#x80FD;&#xFF08;&#x8FD9;&#x4E9B;&#x90FD;&#x662F;&#x5728;REACT&#x91CC;&#x7684;&#xFF09;   </p>
 <pre><code class="lang-html"><span class="hljs-tag">&lt;<span class="hljs-name">script</span>&gt;</span><span class="javascript">
 <span class="hljs-comment">//&#x6253;&#x5370;&#x5230;&#x6D4F;&#x89C8;&#x5668;&#x7684;&#x63A7;&#x5236;&#x53F0;</span>
   httpPostAPI=()=&gt; {
@@ -437,6 +438,105 @@
 
 </span><span class="hljs-tag">&lt;/<span class="hljs-name">script</span>&gt;</span>
 </code></pre>
+<hr>
+<p>&#x589E;&#x5220;&#x6539;&#x67E5;    </p>
+<pre><code class="lang-html"><span class="hljs-tag">&lt;<span class="hljs-name">script</span>&gt;</span><span class="javascript">
+state={storage_iGet:<span class="hljs-string">&quot;&quot;</span>,
+        storage_Name:<span class="hljs-string">&quot;&quot;</span>,
+        storage_Feild:<span class="hljs-string">&quot;&quot;</span>,
+        storage_value:<span class="hljs-string">&quot;&quot;</span>,
+    }
+
+<span class="hljs-comment">//&#x8F93;&#x5165;&#x5C31;&#x4F1A;&#x66F4;&#x65B0;state</span>
+handleChange = (e) =&gt; {
+<span class="hljs-keyword">this</span>.setState({
+    [e.target.name]: e.target.value,
+})
+}
+
+<span class="hljs-comment">//&#x5408;&#x7EA6;&#x5730;&#x5740;</span>
+contractAddress_1=<span class="hljs-string">&apos;Contract9m7S1Y66YL2XqXvh1VxrL7X8cdh19MKkMknGKXWPFZhk&apos;</span>
+
+  comm_callABI=(contract2,action2,sympol2,to2,howmuch2,memo2,array2)=&gt;{
+
+    <span class="hljs-keyword">const</span> contractAddress = contract2
+    <span class="hljs-keyword">const</span> { storage_iGet,storage_Name,storage_Feild,storage_value } = <span class="hljs-keyword">this</span>.state
+
+    IWalletJS.enable().then((account) =&gt; {
+      <span class="hljs-keyword">if</span>(account){
+        <span class="hljs-keyword">const</span> iost = IWalletJS.newIOST(IOST)
+
+        <span class="hljs-keyword">const</span> tx = iost.callABI(contractAddress, <span class="hljs-string">&quot;iControll&quot;</span>, [storage_iGet,storage_Name,storage_Feild,storage_value]);
+        iost.signAndSend(tx)
+        .on(<span class="hljs-string">&apos;pending&apos;</span>, (pending) =&gt; {
+          <span class="hljs-built_in">console</span>.log(pending, <span class="hljs-string">&apos;pending&apos;</span>)
+          <span class="hljs-keyword">this</span>.setState({
+            isLoading: <span class="hljs-literal">true</span>,
+            txHash: pending,
+            result: <span class="hljs-string">&apos;&apos;</span>
+          })
+        })
+        .on(<span class="hljs-string">&apos;success&apos;</span>, (result) =&gt; {
+          <span class="hljs-built_in">console</span>.log(result,<span class="hljs-string">&apos;result&apos;</span>)
+          <span class="hljs-keyword">this</span>.setState({
+            isLoading: <span class="hljs-literal">false</span>,
+            result: result.returns[<span class="hljs-number">0</span>],
+            jiaoyihao:result.returns[<span class="hljs-number">0</span>]
+          })
+        })
+        .on(<span class="hljs-string">&apos;failed&apos;</span>, (failed) =&gt; {
+          <span class="hljs-built_in">console</span>.log(failed, <span class="hljs-string">&apos;failed&apos;</span>)
+          <span class="hljs-keyword">this</span>.setState({
+            isLoading: <span class="hljs-literal">false</span>,
+            jiaoyihao:failed.status_code
+          })
+        })
+      }<span class="hljs-keyword">else</span>{
+        <span class="hljs-built_in">console</span>.log(<span class="hljs-string">&apos;not login&apos;</span>)
+      }
+  })
+  setTimeout(() =&gt; {
+    alert(<span class="hljs-string">&quot;&#x6BCF;&#x4E2A;&#x8D26;&#x6237;&#x53EF;&#x4EE5;&#x6CE8;&#x518C;&#x9886;&#x53D6;&#x4E00;&#x6B21;&#x7A7A;&#x6295;&#xFF0C;&#x611F;&#x8C22;&#x652F;&#x6301;&#xFF01;\n&#x586B;&#x5199;&#x6635;&#x79F0;&#x53EF;&#x4EE5;&#x4FDD;&#x62A4;&#x8D26;&#x6237;&#x9690;&#x79C1;&#xFF0C;&#x5982;&#x679C;&#x672A;&#x586B;&#x5199;&#xFF0C;&#x53EF;&#x4EE5;&#x8FD4;&#x56DE;&#x586B;&#x5199;&#x3002;&quot;</span>)
+  }, <span class="hljs-number">100</span>);
+
+  }
+
+  iControll_Storage_1=()=&gt;{
+    <span class="hljs-keyword">this</span>.comm_callABI(<span class="hljs-keyword">this</span>.contractAddress_1,<span class="hljs-string">&quot;IControll&quot;</span>,<span class="hljs-string">&quot;iost&quot;</span>,<span class="hljs-string">&quot;name&quot;</span>,<span class="hljs-string">&quot;10&quot;</span>,<span class="hljs-string">&quot;memo&quot;</span>,[<span class="hljs-string">&quot;&#x4E0D;&#x7528;&#x586B;&#x5199;&#xFF0C;&#x56E0;&#x4E3A;comm_callABI&#x81EA;&#x52A8;&#x8BC6;&#x522B;state&quot;</span>])
+  }
+
+
+</span><span class="hljs-tag">&lt;/<span class="hljs-name">script</span>&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">className</span>=<span class="hljs-string">&quot;juzhong4 wenzi16 kuan90 &quot;</span>&gt;</span>
+
+
+    iGet:<span class="hljs-tag">&lt;<span class="hljs-name">input</span>
+                <span class="hljs-attr">className</span>=<span class="hljs-string">&quot;input1 juzhong3&quot;</span>
+                <span class="hljs-attr">name</span>=<span class="hljs-string">&quot;storage_iGet&quot;</span>
+                <span class="hljs-attr">onChange</span>=<span class="hljs-string">{this.handleChange}</span>
+                /&gt;</span>
+    mapName:<span class="hljs-tag">&lt;<span class="hljs-name">input</span>
+                <span class="hljs-attr">className</span>=<span class="hljs-string">&quot;input1 juzhong3&quot;</span>
+                <span class="hljs-attr">name</span>=<span class="hljs-string">&quot;storage_Name&quot;</span>
+                <span class="hljs-attr">onChange</span>=<span class="hljs-string">{this.handleChange}</span>
+                /&gt;</span>
+    map_feild:<span class="hljs-tag">&lt;<span class="hljs-name">input</span>
+                <span class="hljs-attr">className</span>=<span class="hljs-string">&quot;input1 juzhong3&quot;</span>
+                <span class="hljs-attr">name</span>=<span class="hljs-string">&quot;storage_Feild&quot;</span>
+                <span class="hljs-attr">onChange</span>=<span class="hljs-string">{this.handleChange}</span>
+                /&gt;</span>
+
+    map_value:<span class="hljs-tag">&lt;<span class="hljs-name">input</span>
+                <span class="hljs-attr">className</span>=<span class="hljs-string">&quot;input1 juzhong3&quot;</span>
+                <span class="hljs-attr">name</span>=<span class="hljs-string">&quot;storage_value&quot;</span>
+                <span class="hljs-attr">onChange</span>=<span class="hljs-string">{this.handleChange}</span>
+                /&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">className</span>=<span class="hljs-string">&quot;anniu juzhong3&quot;</span>  <span class="hljs-attr">onClick</span>=<span class="hljs-string">{this.iControll_Storage_1}</span>&gt;</span>iDoit<span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
+
+
+
+    <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
+</code></pre>
 
                                 
                                 </section>
@@ -464,12 +564,12 @@
 
             
                 
-                <a href="003_GET.html" class="navigation navigation-prev " aria-label="Previous page: GET获得json返回值-展示余额">
+                <a href="006_iControll.html" class="navigation navigation-prev " aria-label="Previous page: 做一个DAPP管理员后台">
                     <i class="fa fa-angle-left"></i>
                 </a>
                 
                 
-                <a href="005_ZHANGZHISHI.html" class="navigation navigation-next " aria-label="Next page: 涨姿势">
+                <a href="006_iControll_002.html" class="navigation navigation-next " aria-label="Next page: 管理员后台smart contract">
                     <i class="fa fa-angle-right"></i>
                 </a>
                 
@@ -480,7 +580,7 @@
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"POST传参获得json返回值-打印","level":"1.4.2","depth":2,"next":{"title":"涨姿势","level":"1.5","depth":1,"path":"005_ZHANGZHISHI.md","ref":"005_ZHANGZHISHI.md","articles":[]},"previous":{"title":"GET获得json返回值-展示余额","level":"1.4.1","depth":2,"path":"003_GET.md","ref":"003_GET.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":["livereload"],"pluginsConfig":{"livereload":{},"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"004_POST.md","mtime":"2020-10-24T20:36:36.980Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2020-10-29T19:48:36.185Z"},"basePath":".","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"做一个DAPP管理员后台","level":"2.1.1","depth":2,"next":{"title":"管理员后台smart contract","level":"2.1.2","depth":2,"path":"006_iControll_002.md","ref":"006_iControll_002.md","articles":[]},"previous":{"title":"做一个DAPP管理员后台","level":"2.1","depth":1,"path":"006_iControll.md","ref":"006_iControll.md","articles":[{"title":"做一个DAPP管理员后台","level":"2.1.1","depth":2,"path":"006_iControll_001.md","ref":"006_iControll_001.md","articles":[]},{"title":"管理员后台smart contract","level":"2.1.2","depth":2,"path":"006_iControll_002.md","ref":"006_iControll_002.md","articles":[]}]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":["livereload"],"pluginsConfig":{"livereload":{},"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"006_iControll_001.md","mtime":"2020-10-29T18:49:58.366Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2020-10-29T19:48:36.185Z"},"basePath":".","book":{"language":""}});
         });
     </script>
 </div>
