@@ -31,3 +31,17 @@
 ```
 
 #### 4 箭头函数里调用的函数，必须是用箭头声明的函数，不能是function声明的   
+
+#### 5 对于mysql中存储url的字段，至少128个
+```SQL
+ALTER TABLE `table_name` CHANGE `url` `url` VARCHAR(128) CHARACTER SET utf8 COLLATE utf8_unicode_ci NOT NULL;
+```
+
+#### 6 关于智能合约的一些计算符号
+```javascript
+//除法最好前面加上（），除完.toFixed(2)一下，省得太大，写入数据库要.toString()
+level.plus((amount_All2*0.01)/level).toFixed(2)).toString()
+
+//加法不用“+”号，用.plus()
+level.plus(123)
+```
