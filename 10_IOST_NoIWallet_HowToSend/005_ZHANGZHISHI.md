@@ -45,3 +45,9 @@ level.plus((amount_All2*0.01)/level).toFixed(2)).toString()
 //加法不用“+”号，用.plus()
 level.plus(123)
 ```
+
+#### 7 安装react干脆把源设为淘宝   
+```
+npm config set disturl https://npm.taobao.org/dist   
+npm config set registry https://registry.npm.taobao.org   
+```
