@@ -22,3 +22,5 @@
 * [循环排版中的按钮监听服务](008_handler.md)
     * [1 实现方法](008_handler_1.md)
     * [2 重点技术](008_handler_2.md)
+----
+* [react中播放视频](009_react_video.md)

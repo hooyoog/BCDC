@@ -50,4 +50,24 @@ level.plus(123)
 ```
 npm config set disturl https://npm.taobao.org/dist   
 npm config set registry https://registry.npm.taobao.org   
-```
+```   
+
+#### 8 linux备份数据库  
+```shell
+ mysqldump -u root -p dzjj_app > /home/download/dzjj_app_20_11_12.sql
+
+ ```   
+
+ #### 9 git 新建分支
+ ```
+ 首先上传当前分支
+ git add .
+ git commit -m '将整直播工程备份，包括mysql和javaweb，在beifen文件夹里'
+ git push origin three_iwallet_lesson_0.0.2
+
+ 然后新建分支
+ （查看当前*）git branch
+ （新建并切换）git checkout -b three_iwallet_lesson_0.0.3 
+  （上传）git push origin three_iwallet_lesson_0.0.3
+
+ ```
