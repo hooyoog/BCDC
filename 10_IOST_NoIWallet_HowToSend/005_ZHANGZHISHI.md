@@ -68,6 +68,6 @@ npm config set registry https://registry.npm.taobao.org
  然后新建分支
  （查看当前*）git branch
  （新建并切换）git checkout -b three_iwallet_lesson_0.0.3 
-  （上传）git push origin three_iwallet_lesson_0.0.3
+ （上传）git push origin three_iwallet_lesson_0.0.3
 
  ```
